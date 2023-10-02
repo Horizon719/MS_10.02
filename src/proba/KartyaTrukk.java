@@ -15,7 +15,7 @@ public class KartyaTrukk {
         for (int i = 0; i < 3; i++) {
             kirak(pakli);
             int oszlop = melyikOszlop();
-            kever(oszlop, pakli);
+            pakli = kever(oszlop, pakli);
         }
         ezVolt(pakli);
     }
@@ -32,46 +32,47 @@ public class KartyaTrukk {
     private static int melyikOszlop() {
         int oszlop;
         do{
-            System.out.print("Kérem adja meg melyik oszlop(1-3):");
+            System.out.print("Kérem adja meg melyik oszlop(1-3): ");
             oszlop = sc.nextInt();
         } while (0 > oszlop || 3 < oszlop);
         return oszlop;
     }
     
-    private static void kever(int oszlop, String[] pakli) {
+    private static String[] kever(int oszlop, String[] pakli) {
         String[] ujTomb = new String[22];
         switch(oszlop){
             case 1:
-                for (int i = 0; i < 7; i++) {
+                for (int i = 1; i < 8; i++) {
                     ujTomb[i] = pakli[20-(i-1)*3];
                 }
-                for (int i = 7; i < 7; i++) {
-                    ujTomb[i] = pakli[19-(i-1)*3];
+                for (int i = 1; i < 8; i++) {
+                    ujTomb[i+7] = pakli[19-(i-1)*3];
                 }
-                for (int i = 14; i < 7; i++) {
-                    ujTomb[i] = pakli[21-(i-1)*3];
+                for (int i = 1; i < 8; i++) {
+                    ujTomb[i+14] = pakli[21-(i-1)*3];
                 }
             case 2:
-                for (int i = 0; i < 7; i++) {
-                    ujTomb[i] = pakli[20-(i-1)*3];
-                }
-                for (int i = 0; i < 7; i++) {
+                for (int i = 1; i < 8; i++) {
                     ujTomb[i] = pakli[19-(i-1)*3];
                 }
-                for (int i = 0; i < 7; i++) {
-                    ujTomb[i] = pakli[21-(i-1)*3];
+                for (int i = 1; i < 8; i++) {
+                    ujTomb[i+7] = pakli[20-(i-1)*3];
+                }
+                for (int i = 1; i < 8; i++) {
+                    ujTomb[i+14] = pakli[21-(i-1)*3];
                 }
             case 3:
-                for (int i = 0; i < 7; i++) {
-                    ujTomb[i] = pakli[20-(i-1)*3];
-                }
-                for (int i = 0; i < 7; i++) {
+                for (int i = 1; i < 8; i++) {
                     ujTomb[i] = pakli[19-(i-1)*3];
                 }
-                for (int i = 0; i < 7; i++) {
-                    ujTomb[i] = pakli[21-(i-1)*3];
+                for (int i = 1; i < 8; i++) {
+                    ujTomb[i+7] = pakli[21-(i-1)*3];
+                }
+                for (int i = 1; i < 8; i++) {
+                    ujTomb[i+14] = pakli[20-(i-1)*3];
                 }
         }
+        return ujTomb;
     }
     
     private static void ezVolt(String[] pakli) {
